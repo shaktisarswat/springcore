@@ -5,8 +5,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
  http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- bean definitions here -->
-    <bean class="com.springcore.Student" name="student1">
+    <!-- dependencyInjection definitions here -->
+    <bean class="com.springcore.dependencyInjection.fieldInitialization.Student" name="student1">
         <property name="studentId">
             <value>1</value>
         </property>
@@ -19,11 +19,12 @@
     </bean>
 
     <!--     using p schema-->
-    <bean class="com.springcore.Student" name="student2" p:studentId="10" p:studentName="Sandeep"
+    <bean class="com.springcore.dependencyInjection.fieldInitialization.Student" name="student2" p:studentId="10"
+          p:studentName="Sandeep"
           p:studentAddress="Churu"/>
 
     <!-- Initiating collection objects -->
-    <bean class="com.springcore.collections.Employee" name="employee">
+    <bean class="com.springcore.dependencyInjection.collections.Employee" name="employee">
         <property name="name" value="Shakti"/>
 
         <property name="phones">
@@ -55,5 +56,30 @@
             </props>
         </property>
     </bean>
+
+
+    <!--    reference Example-->
+    <bean class="com.springcore.dependencyInjection.reference.CarParts" name="refCarParts">
+        <property name="parts">
+            <list>
+                <value>staring</value>
+                <value>tyres</value>
+                <value>gate</value>
+                <value>engine</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="com.springcore.dependencyInjection.reference.Car" name="refCar">
+        <property name="modelNumber">
+            <value>007</value>
+        </property>
+        <property name="milege" value="21.07"/>
+        <property name="carType" value="Hybrid"/>
+        <property name="carParts">
+            <ref bean="refCarParts"/>
+        </property>
+    </bean>
+
 
 </beans>

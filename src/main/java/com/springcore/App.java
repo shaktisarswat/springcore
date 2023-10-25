@@ -1,6 +1,8 @@
 package com.springcore;
 
-import com.springcore.collections.Employee;
+import com.springcore.dependencyInjection.collections.Employee;
+import com.springcore.dependencyInjection.fieldInitialization.Student;
+import com.springcore.dependencyInjection.reference.Car;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -18,5 +20,8 @@ public class App {
 
         Employee employee = (Employee) context.getBean("employee");
         System.out.println(employee);
+
+        Car car= (Car) context.getBean("refCar");
+        System.out.println(car);
     }
 }
