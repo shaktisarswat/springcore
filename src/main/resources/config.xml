@@ -4,6 +4,7 @@
        xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
  http://www.springframework.org/schema/beans/spring-beans.xsd">
+
     <!-- bean definitions here -->
     <bean class="com.springcore.Student" name="student1">
         <property name="studentId">
@@ -17,6 +18,42 @@
         </property>
     </bean>
 
+    <!--     using p schema-->
     <bean class="com.springcore.Student" name="student2" p:studentId="10" p:studentName="Sandeep"
           p:studentAddress="Churu"/>
+
+    <!-- Initiating collection objects -->
+    <bean class="com.springcore.collections.Employee" name="employee">
+        <property name="name" value="Shakti"/>
+
+        <property name="phones">
+            <set>
+                <value>99XXXXXX1234</value>
+                <value>99XXXXX12345</value>
+            </set>
+        </property>
+
+        <property name="address">
+            <list>
+                <value>Churu</value>
+                <value>Rajasthan</value>
+            </list>
+        </property>
+
+        <property name="courses">
+            <map>
+                <entry key="English" value="ENG01"></entry>
+                <entry key="Math" value="M01"></entry>
+            </map>
+        </property>
+
+        <property name="properties">
+            <props>
+                <prop key="DB_URL">127.0.0.1</prop>
+                <prop key="DB_USERNAME">root</prop>
+                <prop key="DB_PASS">root123</prop>
+            </props>
+        </property>
+    </bean>
+
 </beans>
