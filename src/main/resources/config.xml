@@ -81,5 +81,9 @@
         </property>
     </bean>
 
+    <bean class="com.springcore.dependencyInjection.constructorInjection.CarInfo" name="consInjCar">
+        <constructor-arg name="mileage" value="10.77"/>
+        <constructor-arg name="carModel" value="SUV700"/>
+    </bean>
 
 </beans>

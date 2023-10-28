@@ -1,6 +1,7 @@
 package com.springcore;
 
 import com.springcore.dependencyInjection.collections.Employee;
+import com.springcore.dependencyInjection.constructorInjection.CarInfo;
 import com.springcore.dependencyInjection.fieldInitialization.Student;
 import com.springcore.dependencyInjection.reference.Car;
 import org.springframework.context.ApplicationContext;
@@ -23,5 +24,8 @@ public class App {
 
         Car car= (Car) context.getBean("refCar");
         System.out.println(car);
+
+        CarInfo carInfo= (CarInfo) context.getBean("consInjCar");
+        System.out.println(carInfo);
     }
 }
