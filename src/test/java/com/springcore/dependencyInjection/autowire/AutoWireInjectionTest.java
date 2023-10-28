@@ -4,6 +4,7 @@ import com.springcore.dependencyInjection.autowiring.DependentClassExampleUsingA
 import com.springcore.dependencyInjection.autowiring.DependentClassExampleUsingXML;
 import com.springcore.dependencyInjection.autowiring.stereotype.Employee;
 import com.springcore.dependencyInjection.autowiring.stereotype.Employer;
+import com.springcore.dependencyInjection.autowiring.stereotype.SpringExpressionLangExample;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -54,5 +55,11 @@ public class AutoWireInjectionTest {
         String hashCode1 = String.valueOf(employee1.hashCode());
         String hashCode2 = String.valueOf(employee2.hashCode());
         Assert.assertNotEquals(hashCode2, hashCode1);
+    }
+
+    @Test
+    public void testingSpelExample() {
+        SpringExpressionLangExample springExpressionLangExample = context.getBean("springExpressionLangExample", SpringExpressionLangExample.class);
+        System.out.println(springExpressionLangExample);
     }
 }
