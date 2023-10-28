@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    <context:annotation-config/>
+
+    <!--     Dependency Class's Dependency Injection-->
+    <bean class="com.springcore.dependencyInjection.autowiring.DependencyClass" name="dependencyClass">
+        <property name="classInfo">
+            <value>This is a dependency class and other classes are dependent on it!!</value>
+        </property>
+    </bean>
+
+    <!--   Dependent Class's dependency Injection Using autowire in XML-->
+    <bean class="com.springcore.dependencyInjection.autowiring.DependentClassExampleUsingXML"
+          name="dependentClassExampleUsingXML" autowire="byType">
+    </bean>
+
+
+    <!--   Dependent Class's dependency Injection Using autowire in Annotation-->
+    <bean class="com.springcore.dependencyInjection.autowiring.DependentClassExampleUsingAnnotation"
+          name="dependentClassExampleUsingAnnotation">
+    </bean>
+
+</beans>
