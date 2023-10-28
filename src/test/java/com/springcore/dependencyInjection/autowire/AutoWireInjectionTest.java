@@ -3,6 +3,8 @@ package com.springcore.dependencyInjection.autowire;
 import com.springcore.dependencyInjection.autowiring.DependentClassExampleUsingAnnotation;
 import com.springcore.dependencyInjection.autowiring.DependentClassExampleUsingXML;
 import com.springcore.dependencyInjection.autowiring.stereotype.Employee;
+import com.springcore.dependencyInjection.autowiring.stereotype.Employer;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -29,12 +31,28 @@ public class AutoWireInjectionTest {
         DependentClassExampleUsingAnnotation dependentClassExampleUsingAnnotation = context.getBean("dependentClassExampleUsingAnnotation", DependentClassExampleUsingAnnotation.class);
         System.out.println(dependentClassExampleUsingAnnotation);
     }
+
     @Test
-    public void testingStereoType()
-    {
-        Employee employee=context.getBean("employee",Employee.class);
+    public void testingStereoType() {
+        Employee employee = context.getBean("employee", Employee.class);
         System.out.println(employee);
     }
 
+    @Test
+    public void testingSingleton() {
+        Employer employer1 = context.getBean("employer", Employer.class);
+        Employer employer2 = context.getBean("employer", Employer.class);
+        String hashCode1 = String.valueOf(employer1.hashCode());
+        String hashCode2 = String.valueOf(employer2.hashCode());
+        Assert.assertEquals(hashCode2, hashCode1);
+    }
 
+    @Test
+    public void testingProtoType() {
+        Employee employee1 = context.getBean("employee", Employee.class);
+        Employee employee2 = context.getBean("employee", Employee.class);
+        String hashCode1 = String.valueOf(employee1.hashCode());
+        String hashCode2 = String.valueOf(employee2.hashCode());
+        Assert.assertNotEquals(hashCode2, hashCode1);
+    }
 }

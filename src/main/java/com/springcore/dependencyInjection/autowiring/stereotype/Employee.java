@@ -1,12 +1,14 @@
 package com.springcore.dependencyInjection.autowiring.stereotype;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
 
 @Component
+@Scope("prototype")
 public class Employee {
     @Value("Shakti")
     private String employeeName;
