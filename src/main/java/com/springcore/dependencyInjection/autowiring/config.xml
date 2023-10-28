@@ -2,11 +2,35 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-     http://www.springframework.org/schema/context
-     http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
     <context:annotation-config/>
+
+    <util:list list-class="java.util.ArrayList" id="myFriends">
+        <value>Shakti</value>
+        <value>Sandeep</value>
+        <value>Jay</value>
+    </util:list>
+
+    <util:set set-class="java.util.LinkedHashSet" id="visitedPlace">
+        <value>Jaipur</value>
+        <value>Jodhpur</value>
+        <value>Nagpur</value>
+        <value>Bikaner</value>
+        <value>Hyderabad</value>
+        <value>Delhi</value>
+        <value>Many more.</value>
+    </util:set>
+
+    <util:map id="workedCompanyWithExp">
+        <entry key="Siemens" value="1 Year"/>
+        <entry key="C-DoT" value="Jun to Present"/>
+    </util:map>
 
     <!--     Dependency Class's Dependency Injection-->
     <bean class="com.springcore.dependencyInjection.autowiring.DependencyClass" name="dependencyClass">
@@ -25,5 +49,7 @@
     <bean class="com.springcore.dependencyInjection.autowiring.DependentClassExampleUsingAnnotation"
           name="dependentClassExampleUsingAnnotation">
     </bean>
+
+    <context:component-scan base-package="com.springcore.dependencyInjection.autowiring.stereotype"/>
 
 </beans>

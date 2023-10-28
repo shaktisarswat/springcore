@@ -2,6 +2,7 @@ package com.springcore.dependencyInjection.autowire;
 
 import com.springcore.dependencyInjection.autowiring.DependentClassExampleUsingAnnotation;
 import com.springcore.dependencyInjection.autowiring.DependentClassExampleUsingXML;
+import com.springcore.dependencyInjection.autowiring.stereotype.Employee;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -28,5 +29,12 @@ public class AutoWireInjectionTest {
         DependentClassExampleUsingAnnotation dependentClassExampleUsingAnnotation = context.getBean("dependentClassExampleUsingAnnotation", DependentClassExampleUsingAnnotation.class);
         System.out.println(dependentClassExampleUsingAnnotation);
     }
+    @Test
+    public void testingStereoType()
+    {
+        Employee employee=context.getBean("employee",Employee.class);
+        System.out.println(employee);
+    }
+
 
 }
