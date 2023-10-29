@@ -1,0 +1,38 @@
+Below are the steps for working with JDBC
+
+Java <--------> JDBC(API Interface)  <-------------->  Driver(Class which implementing the API method) <-----> Databases
+                   (JAVA provide this interface)        (This Driver class provided by Database's vendor)       (MySql, SQL, MongoDB)
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+Step1: Load appropriate class
+        for MySql  Class.forName("com.mysql.jdbc.Driver") or DriverManager.registerDriver()
+
+        Never call DriverManager.registerDriver() method manually. The JDBC spec requires a driver to register itself when the class is loaded, and the class is loaded via Class.forName(). In JDBC 4 the drivers are able to be loaded automatically just by being on the class path.
+        DriverManager.registerDriver() manually is potentially dangerous since it actually causes the Driver to be registered twice. If your code requires you to deregister a Driver to prevent a memory leak then you would only end up deregistering it once and leave a second instance registered.
+
+Step2: Create connection object
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/techblog", "root", "root");
+
+Step3: Create Query, Statement, PreparedStatement, CallableStatement
+      String query="Select * from table;"
+
+      Statement statement=con.createStatement();
+
+      // when we are retrieving data that time it return ResultSet else Integer
+      ResultSet resultSet=statement.executeQuery(query);
+
+Step4: Process Data
+
+    while(resultSet.hasNext())
+    {
+         Integer id=resultSet.getInt("tableID");
+         String name=resultSet.getString("tableName");
+    }
+
+Step5: Close the connection
+    con.close()
+
+
+
